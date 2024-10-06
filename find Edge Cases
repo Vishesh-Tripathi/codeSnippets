@@ -1,0 +1,133 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool check(int n,int k,vector<int>&v){
+     set<int>s;
+     int f =0;
+    for(auto i:v){
+        if(i == k) f=1;
+        s.insert(i);
+    }
+    // int cnt =0;
+    // for(auto i:v){
+    //     if(i == k){
+    //         cnt++;
+    //     }
+    // }
+    // if(cnt == n-1){
+    //     return true;
+    // }
+    // return false;
+    
+    if(s.size()==2 && f==1 ){
+        return true;
+    }
+    else return false;
+}
+int  correct(int n,int k,vector<int>&arr){
+    int ans =0;
+     bool same = true;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != k) {
+                same = false;
+                break;
+            }
+        }
+
+        if (same) {
+           ans =0;  // No operation needed
+        } else {
+            // Find the start and end of the range where arr[i] != k
+            int start = -1, end = n;
+            for (int i = 0; i < n; i++) {
+                if (arr[i] != k) {
+                    if (start == -1) start = i;
+                    end = i;
+                }
+            }
+            // If there's only one element not equal to k, we need just one operation
+            if (start == end) {
+                ans =1;
+            } else {
+                bool allXORSame = true, allDivisibleByK = true;
+                long long firstXOR = (arr[start] ^ k);
+
+                for (int i = start; i <= end; i++) {
+                    if (arr[i] % k != 0) allDivisibleByK = false;
+                    if ((arr[i] ^ k) != firstXOR) allXORSame = false;
+                }
+
+                if (allXORSame || allDivisibleByK) {
+                   ans =1;
+                } else {
+                   ans = 2;
+                }
+            }
+        }
+        return ans;
+}
+int mySol(int n,int k,vector<int>&v){
+    int ans1 =0;
+    int  f= 0;
+	    int f2 =0;
+    for(auto i:v){
+	        if(i!=k){
+	            f = 1;
+	            break;
+	        }
+	    }
+	    for(auto i:v){
+	        if(i%k != 0){
+	            f2 = 1;
+	            break;
+	        }
+	    }
+	    
+	    //there are only 3 possible ans 0 1 and 2 
+	    // 0 is when elements are already equal to  k 
+	    
+	    int f3 =0;
+	    int cnt =0;
+	    int key = v[0];
+	    for(auto i:v){
+	        if(i == key){
+	            cnt++;
+	        }
+	    }
+	    if(cnt == n){
+	        f3 =1;
+	    }
+	    if(f==0){
+	        ans1 =0;
+	    }else if ( f2 == 0 || f3 == 1 || check(n,k,v) == true){
+	        ans1 = 1;
+	    }else{
+	        ans1 = 2;
+	    }
+	    return ans1;
+	    
+}
+
+
+int main() {
+srand(time(NULL));
+
+int cnt = 1;
+while (cnt <= 10000) {
+    int n = rand() % 5 + 1;
+     int k = rand() % 5 + 1;
+    vector<int>a(n);
+    for (int i = 0; i < n; i++) a[i] = rand() % 7 + 1;
+    int correctAns = correct(n,k,a);
+    int myAns = mySol(n,k,a);
+    // cout<<correctAns<<" "<<myAns<<endl;
+    if (correctAns != myAns) {
+        cout << k << endl;
+        for (int i = 0; i < n; i++) {
+            cout << a[i] << " ";
+        }
+        cout << endl;
+        break;
+    }
+    cnt++;
+}
+}
