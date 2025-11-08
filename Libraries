@@ -1,0 +1,60 @@
+Core I/O and Utilities
+
+#include <iostream>      // cin, cout, cerr
+#include <iomanip>       // setw, setprecision, formatting
+#include <string>        // string class
+#include <sstream>       // stringstream for parsing strings
+#include <cmath>         // math functions (sqrt, pow, abs, etc.)
+#include <cstdlib>       // general utilities, rand(), atoi(), etc.
+#include <ctime>         // time functions
+
+Containers (STL Data Structures)
+
+#include <vector>        // dynamic arrays
+#include <array>         // fixed-size array (C++11)
+#include <deque>         // double-ended queue
+#include <list>          // doubly linked list
+#include <set>           // set, multiset
+#include <map>           // map, multimap
+#include <unordered_set> // hash-based set
+#include <unordered_map> // hash-based map
+#include <stack>         // LIFO stack
+#include <queue>         // FIFO queue, priority_queue
+#include <bitset>        // fixed-size bit array
+
+
+Algorithms and Math Helpers
+
+#include <algorithm>     // sort, reverse, max, min, find, etc.
+#include <numeric>       // accumulate, iota, gcd, lcm (C++17)
+#include <functional>    // custom comparators, greater<int>(), etc.
+#include <utility>       // pair, make_pair, swap
+
+Advanced and Miscellaneous
+
+
+#include <iterator>      // iterators
+#include <tuple>         // tuple, tie, structured bindings
+#include <typeinfo>      // typeid()
+#include <limits>        // numeric_limits<T>::max(), etc.
+#include <fstream>       // file I/O (ifstream, ofstream)
+#include <chrono>        // time measurement (C++11+)
+#include <random>        // modern random number generation
+
+
+Generally used 
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <map>
+#include <set>
+#include <queue>
+#include <stack>
+#include <unordered_map>
+#include <unordered_set>
+using namespace std;
+
+
+
