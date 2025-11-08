@@ -7,6 +7,7 @@ Core I/O and Utilities
 #include <cmath>         // math functions (sqrt, pow, abs, etc.)
 #include <cstdlib>       // general utilities, rand(), atoi(), etc.
 #include <ctime>         // time functions
+#include <cctype>              //isalpha isdigit
 
 Containers (STL Data Structures)
 
